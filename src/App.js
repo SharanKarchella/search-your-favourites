@@ -23,13 +23,13 @@ function App() {
 
   const handleSubmit = async(e) =>{
     e.preventDefault();
-    console.log('apikey',API_KEY)
+    //console.log('apikey',API_KEY)
 
-    
     try{
       const url = await axios.get(`https://www.omdbapi.com/?s=${searchData}&apikey=${API_KEY}`);
-      console.log(url.data.Search);
+      //console.log(url.data.Search);
       setApiData(url.data.Search);
+      setSearchData('');
     }
 
     catch(capturingError){
@@ -65,6 +65,7 @@ function App() {
         </form>
       </div>
     <br />
+
       <Container>
         <Row>
         {storeApiData?.map((items)=>(
@@ -78,15 +79,6 @@ function App() {
         }
         </Row>
       </Container>
-      
-{/* 
-      <Row>
-  {storeApiData.map((item, index) => (
-    <Col key={index} md={4}>
-      <Cardcomponent items={item} />
-    </Col>
-  ))}
-</Row> */}
 </div>
     </>
   );
